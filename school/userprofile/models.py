@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
-from ckeditor.fields import RichTextField
+from mdeditor.fields import MDTextField
 
 
 class SchoolClass(models.Model):
@@ -35,7 +35,7 @@ class UserProfile(models.Model):
     school_class = models.ForeignKey(SchoolClass, on_delete=models.PROTECT, verbose_name="Класс", null=True, blank=True)
     school = models.ForeignKey(School, on_delete=models.PROTECT, verbose_name="Школа", null=True, blank=True)
     district = models.ForeignKey(District, on_delete=models.PROTECT, verbose_name="Муниципалитет", null=True, blank=True)
-    merit = RichTextField(blank=True, verbose_name="Заслуги", null=True)
+    merit = MDTextField(blank=True, verbose_name="Заслуги", null=True)
 
     def __unicode__(self):
         return self.user
