@@ -24,7 +24,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'mdeditor/', include('mdeditor.urls'))
+    path('', include('main.urls')),
+    path(r'mdeditor/', include('mdeditor.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 
