@@ -1,0 +1,76 @@
+{% extends "school/base.html" %}
+{% load allauth i18n %}
+{% block head_title %}
+    {% trans "Sign Out" %}
+{% endblock head_title %}
+{% block content %}
+
+  <!-- ================ start banner area ================= -->
+	<section class="blog-banner-area" id="category">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>Выйти</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Домой</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Выйти</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+  <!--================Login Box Area =================-->
+	<section class="login_box_area section-margin">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<div class="hover">
+							<h4>Впервые на нашем сайте?</h4>
+							<p>Для того чтобы воспользоваться всем функционалом нашего сайта предлагаем Вам</p>
+							<a class="button button-account" href="{% url 'account_signup' %}">Завести аккаунт</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>{% trans "Выход" %}</h3>
+						<p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+                        <div class="login_part_text_iner">
+							<form class="row login_form" action="#" method="post" novalidate="novalidate">
+
+
+    							{% url 'account_logout' as action_url %}
+    							{% element form method="post" action=action_url no_visible_fields=True %}
+        						{% slot body %}
+            					{% csrf_token %}
+            					{% element fields form=form unlabeled=True %}
+
+            					{% endelement %}
+            					{% if redirect_field_value %}
+            						<input type="hidden"
+                    					name="{{ redirect_field_name }}"
+                    					value="{{ redirect_field_value }}">
+								{% endif %}
+        						{% endslot %}
+        						{% slot actions %}
+								<div class="col-md-12 form-group">
+
+								    <button type="submit" value="submit" class="button button-login w-100">{% trans "Sign Out" %}</button>
+							    </div>
+        						{% endslot %}
+    							{% endelement %}
+							</form>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Login Box Area =================-->
+{% endblock %}
