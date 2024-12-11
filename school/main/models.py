@@ -5,8 +5,9 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
-from mdeditor.fields import MDTextField
 from .fields import WEBPField
+from django_ckeditor_5.fields import CKEditor5Field
+
 
 
 class Section(models.Model):
@@ -45,15 +46,15 @@ class Prog(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото", null=True, blank=True)
-    content = MDTextField(blank=True, verbose_name="Содержание")
+    content = models.TextField(blank=True, verbose_name="Содержание")
     photo2 = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото2", null=True, blank=True)
-    selection_procedure = MDTextField(blank=True, null=True, verbose_name="Порядок отбора")
+    selection_procedure = models.TextField(blank=True, null=True, verbose_name="Порядок отбора")
     photo3 = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото3", null=True, blank=True)
-    selection_procedure2 = MDTextField(blank=True, null=True, verbose_name="Порядок отбора 2 абзац")
+    selection_procedure2 = models.TextField(blank=True, null=True, verbose_name="Порядок отбора 2 абзац")
     photo4 = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото4", null=True, blank=True)
-    prog_statement = MDTextField(blank=True, verbose_name="Положение о программе")
+    prog_statement = models.TextField(blank=True, verbose_name="Положение о программе")
     photo5 = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото5", null=True, blank=True)
-    prog_statement2 = MDTextField(blank=True, verbose_name="Положение о программе 2 абзац")
+    prog_statement2 = models.TextField(blank=True, verbose_name="Положение о программе 2 абзац")
     name_pdffile = models.CharField(max_length=255, verbose_name="Имя PDF файла", null=True, blank=True)
     pdffile = models.FileField(upload_to="pdf/%Y/%m/%d/", verbose_name="PDF", null=True, blank=True)
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Дата и время создания")
@@ -129,7 +130,7 @@ class Lecture(models.Model):
 class Documents(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
-    content = MDTextField(blank=True, verbose_name="Содержание")
+    content = models.TextField(blank=True, verbose_name="Содержание")
     name_pdffile = models.CharField(max_length=255, verbose_name="Имя PDF файла", null=True, blank=True)
     doc_file = models.FileField(upload_to="pdf/%Y/%m/%d/", verbose_name="Файл", null=True, blank=True)
     executor = models.ForeignKey(User, on_delete=models.PROTECT, null=True, verbose_name="Исполнитель")
@@ -177,7 +178,7 @@ def image_folder(instance, filename):
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
-    content = MDTextField(blank=True, verbose_name="Текст")
+    content = CKEditor5Field(blank=True, verbose_name="Текст", config_name="extends")
     photo = WEBPField(verbose_name='фото 633x550px', upload_to=image_folder, blank=True, null=True)
     photo2 = WEBPField(verbose_name='фото2', upload_to=image_folder,  blank=True, null=True)
     photo3 = models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото№3", blank=True, null=True)

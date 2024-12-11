@@ -46,7 +46,7 @@
           <img src="{{ n.photo.url }}" alt="{{ n.title }}" class="img-fluid">
           <a href="{{ n.get_absolute_url }}" class="hero-carousel__slideOverlay">
             <h3>{{ n.title }}</h3>
-            <p>{{ n.time_update|date:"d" }}</p>
+            <p>{{ n.content|safe }}</p>
           </a>
         </div>
         {% endif %}
