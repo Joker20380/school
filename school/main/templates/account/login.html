@@ -1,4 +1,5 @@
 {% extends "school/base.html" %}
+{% load static %}
 {% load i18n %}
 {% load allauth account %}
 {% block title %}
@@ -74,10 +75,11 @@
 							    </div>
         						{% endslot %}
                             {% endelement %}
-                        </form>
-                            {% if SOCIALACCOUNT_ENABLED %}
+							{% if SOCIALACCOUNT_ENABLED %}
                             {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
                             {% endif %}
+                        </form>
+
 					</div>
 				</div>
 			</div>

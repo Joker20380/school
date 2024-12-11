@@ -1,4 +1,5 @@
 {% extends "school/base.html" %}
+{% load static %}
 {% load allauth i18n %}
 {% block title %}
     {% trans "Sign Out" %}
@@ -30,9 +31,9 @@
 				<div class="col-lg-6">
 					<div class="login_box_img">
 						<div class="hover">
-							<h4>Впервые на нашем сайте?</h4>
-							<p>Для того чтобы воспользоваться всем функционалом нашего сайта предлагаем Вам</p>
-							<a class="button button-account" href="{% url 'account_signup' %}">Завести аккаунт</a>
+							<h4>Уже уходите?</h4>
+							<p>Подпишитесь на наши новости чтобы быть в курсе событий ГБОУ "Вершина"</p>
+							<a class="button button-account" href="{% url 'account_signup' %}">Подписаться</a>
 						</div>
 					</div>
 				</div>

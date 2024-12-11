@@ -10,6 +10,10 @@ class SchoolClass(models.Model):
     def __str__(self):
         return self.school_class
 
+    class Meta:
+        verbose_name = 'Класс'
+        verbose_name_plural = 'Классы'
+
 
 class School(models.Model):
     school = models.CharField(max_length=100, null=True, blank=True, verbose_name="Школа")
@@ -17,12 +21,20 @@ class School(models.Model):
     def __str__(self):
         return self.school
 
+    class Meta:
+        verbose_name = 'Школа'
+        verbose_name_plural = 'Школы'
+
 
 class District(models.Model):
     district = models.CharField(max_length=100, null=True, blank=True, verbose_name="Муниципалитет")
 
     def __str__(self):
         return self.district
+
+    class Meta:
+        verbose_name = 'Район'
+        verbose_name_plural = 'Районы'
 
 
 class UserProfile(models.Model):

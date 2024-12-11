@@ -38,75 +38,55 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
-						<h3>Create an account</h3>
-						<form class="row login_form" action="#/" id="register_form" >
+						<h3 style="margin-bottom: 35px">Завести аккаунт</h3>
+                        <form class="row login_form" action="#" method="post" novalidate="novalidate">
+    						{% url 'account_signup' as action_url %}
+    						{% element form form=form method="post" action=action_url tags="entrance,signup" %}
+        					{% slot body %}
+            				{% csrf_token %}
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-							</div>
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
-              </div>
-              <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
-              </div>
-              <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
-							</div>
-							<div class="col-md-12 form-group">
+                            	<input type="text" class="form-control" id="username" autocomplete="username" name="username" value=""
+                                    placeholder="Имя пользователя" required="">
+                            </div>
+                            <div class="col-md-12 form-group">
+                            	<input type="email" class="form-control" id="email" autocomplete="email" name="email" value=""
+                                    placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="password1" autocomplete="current-password" name="password1"
+                                    value="" placeholder="Пароль" required="">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="password2" autocomplete="current-password" name="password2"
+                                    value="" placeholder="Пароль еще раз" required="">
+                            </div>
+            				{% if redirect_field_value %}
+                				<input type="hidden"
+                    				name="{{ redirect_field_name }}"
+                    				value="{{ redirect_field_value }}" />
+            				{% endif %}
+            				<div class="col-md-12 form-group p_star">
 								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
-								</div>
+                					<input type="checkbox" id="f-option4" name="selector" />
+                					<label for="f-option4"><a href="#">Конфиденциальность</a></label>
+
+            					</div>
+    						</div>
+        					{% endslot %}
+        					{% slot actions %}
+        					<div class="col-md-12 form-group p_star">
+                                <button type="submit" class="button button-register w-100">
+                					{% trans 'Sign Up' %}
+                				</button>
 							</div>
-							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">Register</button>
-							</div>
-						</form>
+        					{% endslot %}
+    						{% endelement %}
+                            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+                        </form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--================End Login Box Area =================-->
-
-
-
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
 {% endblock content %}
