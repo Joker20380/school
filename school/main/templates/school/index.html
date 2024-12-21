@@ -43,7 +43,11 @@
         {% for n in news %}
         {% if n.is_published == 1 %}
         <div class="hero-carousel__slide">
+          {% if n.photo %}
           <img src="{{ n.photo.url }}" alt="{{ n.title }}" class="img-fluid">
+          {% else %}
+          <img src="{% static '/img/no-image.PNG' %}" alt="фото отсутствует" class="img-fluid">
+          {% endif %}
           <a href="{{ n.get_absolute_url }}" class="hero-carousel__slideOverlay">
             <h3>{{ n.title }}</h3>
             <p>{{ n.content|safe }}</p>

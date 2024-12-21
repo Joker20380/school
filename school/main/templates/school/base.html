@@ -21,6 +21,7 @@
 <body>
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
+		{% block mainmenu %}
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -31,9 +32,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+ <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+              <li class="nav-item submenu dropdown"><a class="nav-link" href="{% url 'index' %}">О центре</a>
+				  <ul class="dropdown-menu">
+					  <li class="nav-item"><a class="nav-link" href="category.html">Сведения об образовательной организации</a></li>
+					  <li class="nav-item"><a class="nav-link" href="single-product.html">Общая информация</a></li>
+					  <li class="nav-item"><a class="nav-link" href="checkout.html">Документы</a></li>
+					  <li class="nav-item"><a class="nav-link" href="confirmation.html">Новости</a></li>
+					  <li class="nav-item"><a class="nav-link" href="cart.html">Контакты</a></li>
+					  <li class="nav-item"><a class="nav-link" href="cart.html">Контакты</a></li>
+					  <li class="nav-item"><a class="nav-link" href="cart.html">Политика конфиденциальности</a></li>
+                </ul>
+			  </li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
@@ -64,7 +75,6 @@
               </li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
-
             <ul class="nav-shop">
               <li class="nav-item">
 				   {% if request.user.is_authenticated %}
@@ -91,6 +101,7 @@
         </div>
       </nav>
     </div>
+
   </header>
 	<!--================ End Header Menu Area =================-->
   <main class="site-main">
@@ -143,6 +154,7 @@
 							</ul>
 						</div>
 					</div>
+					{% endblock mainmenu %}
 					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
 						<div class="single-footer-widget tp_widgets">
 							<h4 class="footer_title">Contact Us</h4>
