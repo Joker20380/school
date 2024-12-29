@@ -9,6 +9,8 @@ from .fields import WEBPField
 from django_ckeditor_5.fields import CKEditor5Field
 
 
+def image_folder(instance, filename):
+    return 'photos/{}.webp'.format(uuid.uuid4().hex)
 
 class Section(models.Model):
     name = models.CharField(max_length=100, verbose_name="Раздел сайта", db_index=True)
@@ -45,15 +47,15 @@ class CategoryProg(models.Model):
 class Prog(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
-    photo = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото", null=True, blank=True)
+    photo = WEBPField(upload_to=image_folder, verbose_name="Фото", null=True, blank=True)
     content = CKEditor5Field(blank=True, verbose_name="Текст", config_name="extends")
-    photo2 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото2", null=True, blank=True)
+    photo2 = WEBPField(upload_to=image_folder, verbose_name="Фото2", null=True, blank=True)
     selection_procedure = CKEditor5Field(blank=True, null=True, verbose_name="Порядок отбора", config_name="extends")
-    photo3 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото3", null=True, blank=True)
+    photo3 = WEBPField(upload_to=image_folder, verbose_name="Фото3", null=True, blank=True)
     selection_procedure2 = CKEditor5Field(blank=True, null=True, verbose_name="Порядок отбора 2 абзац", config_name="extends")
-    photo4 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото4", null=True, blank=True)
+    photo4 = WEBPField(upload_to=image_folder, verbose_name="Фото4", null=True, blank=True)
     prog_statement = CKEditor5Field(blank=True, verbose_name="Положение о программе", config_name="extends")
-    photo5 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото5", null=True, blank=True)
+    photo5 = WEBPField(upload_to=image_folder, verbose_name="Фото5", null=True, blank=True)
     prog_statement2 = CKEditor5Field(blank=True, verbose_name="Положение о программе 2 абзац", config_name="extends")
     name_pdffile = models.CharField(max_length=255, verbose_name="Имя PDF файла", null=True, blank=True)
     pdffile = models.FileField(upload_to="pdf/%Y/%m/%d/", verbose_name="PDF", null=True, blank=True)
@@ -171,9 +173,6 @@ class CategoryNews(models.Model):
         verbose_name_plural = 'Категории новостей'
         ordering = ['id']
 
-def image_folder(instance, filename):
-    return 'photos/{}.webp'.format(uuid.uuid4().hex)
-
 
 class News(models.Model):
     title = models.CharField(max_length=255, verbose_name="Заголовок")
@@ -181,9 +180,9 @@ class News(models.Model):
     content = CKEditor5Field(blank=True, verbose_name="Текст", config_name="extends")
     photo = WEBPField(verbose_name='фото 633x550px', upload_to=image_folder, blank=True, null=True)
     photo2 = WEBPField(verbose_name='фото2', upload_to=image_folder,  blank=True, null=True)
-    photo3 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото№3", blank=True, null=True)
-    photo4 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото№4", blank=True, null=True)
-    photo5 = WEBPField(upload_to="photos/%Y/%m/%d/", verbose_name="Фото№5", blank=True, null=True)
+    photo3 = WEBPField(verbose_name="Фото№3", upload_to=image_folder, blank=True, null=True)
+    photo4 = WEBPField(verbose_name="Фото№4", upload_to=image_folder, blank=True, null=True)
+    photo5 = WEBPField(verbose_name="Фото№5", upload_to=image_folder, blank=True, null=True)
     time_create = models.DateTimeField(verbose_name="Дата и время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Дата и время обновления")
     is_published = models.BooleanField(default=True, verbose_name="Публикация")

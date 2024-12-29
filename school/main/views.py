@@ -50,6 +50,11 @@ class Index(DataMixin, ListView):
         post_is_published = News.objects.all()
         return post_is_published
 
+    @staticmethod
+    def program_last6():
+        program_last6 = Prog.objects.all()
+        return program_last6
+
 
 class ShowNews(DataMixin, DetailView):
     paginate_by = 1
@@ -72,3 +77,4 @@ class ShowNews(DataMixin, DetailView):
     def post_last6():
         post_last6 = News.objects.reverse()[:6]
         return post_last6
+
