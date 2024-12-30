@@ -53,10 +53,8 @@
 											<div class="col-lg-3  col-md-3">
 													<div class="blog_info text-right">
 															<div class="post_tag">
-																	<a href="#">Искусство</a>
-																	<a class="active" href="#">Наука</a>
-																	<a href="#">Спорт</a>
-																	<a href="#">Учебный центр</a>
+																	<a href="#">Категория</a>
+																	<a class="active" href="#">{{ news.cat.name }}</a>
 															</div>
 															<ul class="blog_meta list">
 																	<li>
@@ -109,29 +107,29 @@
 													<p class="excert">{{ news.content|safe }}</p>
 											</div>
 											<div class="col-lg-12">
+												{% if news.content2 %}
 													<div class="quotes">
-															MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-															on boot camp when you can get the MCSE study materials yourself at a fraction of the camp
-															price. However, who has the willpower to actually sit through a self-imposed MCSE training.
+														{{ news.content2|safe }}
 													</div>
+												{% endif %}
 													<div class="row">
+														{% if news.photo2 %}
 															<div class="col-6">
-																	<img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+																	<img class="img-fluid" src="{{ news.photo2.url }}" alt="{{ news.title }}">
 															</div>
+														{% endif %}
+														{% if news.photo3 %}
 															<div class="col-6">
-																	<img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+																	<img class="img-fluid" src="{{ news.photo3.url }}" alt="{{ news.title }}">
 															</div>
+														{% endif %}
 															<div class="col-lg-12 mt-4">
-																	<p>
-																			MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-																			on boot camp when you can get the MCSE study materials yourself at a fraction of
-																			the camp price. However, who has the willpower.
-																	</p>
-																	<p>
-																			MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-																			on boot camp when you can get the MCSE study materials yourself at a fraction of
-																			the camp price. However, who has the willpower.
-																	</p>
+																{% if news.content3 %}
+																	<p>{{ news.content3|safe }}</p>
+																{% endif %}
+																{% if news.content4 %}
+																	<p>{{ news.content4|safe }}</p>
+																{% endif %}
 															</div>
 													</div>
 											</div>

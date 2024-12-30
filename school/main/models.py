@@ -10,7 +10,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 
 
 def image_folder(instance, filename):
-    return 'photos/{}.webp'.format(uuid.uuid4().hex)
+    return "photos/{}.webp".format(uuid.uuid4().hex)
 
 class Section(models.Model):
     name = models.CharField(max_length=100, verbose_name="Раздел сайта", db_index=True)
@@ -179,10 +179,13 @@ class News(models.Model):
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='URL')
     content = CKEditor5Field(blank=True, verbose_name="Текст", config_name="extends")
     photo = WEBPField(verbose_name='фото 633x550px', upload_to=image_folder, blank=True, null=True)
+    content2 = CKEditor5Field(blank=True, null=True, verbose_name="Текст2", config_name="extends")
     photo2 = WEBPField(verbose_name='фото2', upload_to=image_folder,  blank=True, null=True)
     photo3 = WEBPField(verbose_name="Фото№3", upload_to=image_folder, blank=True, null=True)
+    content3 = CKEditor5Field(blank=True, null=True, verbose_name="Текст3", config_name="extends")
     photo4 = WEBPField(verbose_name="Фото№4", upload_to=image_folder, blank=True, null=True)
     photo5 = WEBPField(verbose_name="Фото№5", upload_to=image_folder, blank=True, null=True)
+    content4 = CKEditor5Field(blank=True, null=True, verbose_name="Текст4", config_name="extends")
     time_create = models.DateTimeField(verbose_name="Дата и время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Дата и время обновления")
     is_published = models.BooleanField(default=True, verbose_name="Публикация")
