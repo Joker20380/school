@@ -2,6 +2,7 @@
 {% load webp %}
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
     <meta charset="UTF-8">
@@ -9,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}{% endblock %} - Образовательный центр ГБОУ "Вершина"</title>
+	<link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
     <link rel="icon" href="{% static '/img/0001.gif' %}" type="image/png">
     <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
@@ -19,6 +23,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+transform: scale(1);
+transform-origin: 0 0;
   <!--================ Start Header Menu Area =================-->
 	<header class="header_area">
 		{% block mainmenu %}
@@ -34,9 +40,11 @@
           </button>
 			<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 				<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-					<li class="nav-item submenu dropdown"><a class="nav-link" href="{% url 'index' %}">О центре</a>
+					<li class="nav-item submenu dropdown">
+						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						   	aria-expanded="false">О центре</a>
 						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="category.html">Сведения об организации</a></li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Сведения об организации</a></li>
 							<li class="nav-item"><a class="nav-link" href="single-product.html">Общая информация</a></li>
 							<li class="nav-item"><a class="nav-link" href="checkout.html">Документы</a></li>
 							<li class="nav-item"><a class="nav-link" href="confirmation.html">Новости</a></li>

@@ -52,11 +52,20 @@
 											</div>
 											<div class="col-lg-3  col-md-3">
 													<div class="blog_info text-right">
-															<div class="post_tag">
-																	<a href="#">Категория</a>
-																	<a class="active" href="#">{{ news.cat.name }}</a>
-															</div>
 															<ul class="blog_meta list">
+																	<li>
+																			<a href="#">Категория
+																					{% if news.cat.id == 1 %}
+																					<i class="lnr lnr-cog"></i>
+																					{% elif news.cat.id == 2 %}
+																					<i class="lnr lnr-music-note"></i>
+																					{% elif news.cat.id == 3 %}
+																					<i class="lnr lnr-bicycle"></i>
+																					{% else %}
+																					<i class="lnr lnr-graduation-hat"></i>
+																					{% endif %}
+																			</a>
+																	</li>
 																	<li>
 																			<a href="#">Mark wiens
 																					<i class="lnr lnr-user"></i>
