@@ -1,0 +1,442 @@
+{% extends 'school/base.html' %}
+{% load l10n %}
+{% load static %}
+
+{% block description %}Личный кабинет Образовательный центр ГБОУ 'Вершина'{% endblock %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+
+{% block content %}
+
+
+
+	<!-- ================ start banner area ================= -->
+	<section class="blog-banner-area" id="blog">
+		<div class="container h-100">
+			<div class="blog-banner">
+				<div class="text-center">
+					<h1>{{ doc.title }}</h1>
+					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{ doc.title }}</li>
+            </ol>
+          </nav>
+				</div>
+			</div>
+    </div>
+	</section>
+	<!-- ================ end banner area ================= -->
+
+
+
+  <!--================Blog Area =================-->
+	<section class="blog_area single-post-area py-80px section-margin--small">
+			<div class="container">
+					<div class="row">
+							<div class="col-lg-8 posts-list">
+
+
+									<div class="comment-form">
+											<h4>Leave a Reply</h4>
+											<form action="{% url 'personal_area' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+                            <div class="row">
+								<div class="single-element-widget" style="margin-left:15px;">
+									<div class="program_thumb">
+										<img width="100" height="100" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'main2/img/default-avatar.png' %}  {% endif %}">
+									</div>
+								</div>
+								<div>
+									<div class="mt-10" style="margin:10px;">
+										{{ form.username }}
+									</div>
+									<div class="mt-10" style="margin:10px;">
+										{{ form.email }}
+									</div>
+								</div>
+							</div>
+                            <div class="mt-10">{{ form.image }}</div>
+						    <div class="form-error">{{ form.errors }}</div>
+						    <div class="form-error">{{ form.image.errors }}</div>
+                            <div class="mt-10">{{ form.last_name }}</div>
+						    <div class="form-error">{{ form.last_name.errors }}</div>
+                            <div class="mt-10">{{ form.first_name }}</div>
+						    <div class="form-error">{{ form.first_name.errors }}</div>
+                            <div class="mt-10">{{ form.patronymic }}</div>
+						    <div class="form-error">{{ form.patronymic.errors }}</div>
+                            <div class="mt-10">{% localize on %}{{ form.birth }}{% endlocalize %}</div>
+						    <div class="form-error">{{ form.birth.errors }}</div>
+                            <div class="mt-10">{{ form.address }}</div>
+						    <div class="form-error">{{ form.address.errors }}</div>
+                             <div class="mt-10">{{ form.phone_number }}</div>
+						    <div class="form-error">{{ form.phone_number.errors }}</div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px;">{{ form.school_class.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.school_class }}</div>
+                                    <div class="form-error">{{ form.school_class.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px; ">{{ form.school.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.school }}</div>
+                                    <div class="form-error">{{ form.school.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px; ">{{ form.district.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.district }}</div>
+                                    <div class="form-error">{{ form.district.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="button button-contactForm boxed-btn">Сохранить</button>
+                            </div>
+						</form>
+									</div>
+							</div>
+							<div class="col-lg-4">
+									<div class="blog_right_sidebar">
+											<aside class="single_sidebar_widget search_widget">
+													<div class="input-group">
+															<input type="text" class="form-control" placeholder="Search Posts">
+															<span class="input-group-btn">
+																	<button class="btn btn-default" type="button">
+																			<i class="lnr lnr-magnifier"></i>
+																	</button>
+															</span>
+													</div>
+													<!-- /input-group -->
+													<div class="br"></div>
+											</aside>
+											<aside class="single_sidebar_widget author_widget">
+													<img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+													<h4>Charlie Barber</h4>
+													<p>Senior blog writer</p>
+													<div class="social_icon">
+                              <a href="#">
+                                  <i class="fab fa-yandex"></i>
+                              </a>
+                              <a href="#">
+                                  <i class="fab fa-vk"></i>
+                              </a>
+                              <a href="#">
+                                  <i class="fab fa-github"></i>
+                              </a>
+                              <a href="#">
+                                <i class="fab fa-telegram"></i>
+                              </a>
+                          </div>
+													<p>Boot camps have its supporters andit sdetractors. Some people do not understand why you should
+															have to spend money on boot camp when you can get. Boot camps have itssuppor ters andits
+															detractors.
+													</p>
+													<div class="br"></div>
+											</aside>
+											<aside class="single_sidebar_widget popular_post_widget">
+													<h3 class="widget_title">Popular Posts</h3>
+													<div class="media post_item">
+															<img src="img/blog/popular-post/post1.jpg" alt="post">
+															<div class="media-body">
+																	<a href="blog-details.html">
+																			<h3>Space The Final Frontier</h3>
+																	</a>
+																	<p>02 Hours ago</p>
+															</div>
+													</div>
+													<div class="media post_item">
+															<img src="img/blog/popular-post/post2.jpg" alt="post">
+															<div class="media-body">
+																	<a href="blog-details.html">
+																			<h3>The Amazing Hubble</h3>
+																	</a>
+																	<p>02 Hours ago</p>
+															</div>
+													</div>
+													<div class="media post_item">
+															<img src="img/blog/popular-post/post3.jpg" alt="post">
+															<div class="media-body">
+																	<a href="blog-details.html">
+																			<h3>Astronomy Or Astrology</h3>
+																	</a>
+																	<p>03 Hours ago</p>
+															</div>
+													</div>
+													<div class="media post_item">
+															<img src="img/blog/popular-post/post4.jpg" alt="post">
+															<div class="media-body">
+																	<a href="blog-details.html">
+																			<h3>Asteroids telescope</h3>
+																	</a>
+																	<p>01 Hours ago</p>
+															</div>
+													</div>
+													<div class="br"></div>
+											</aside>
+											<aside class="single_sidebar_widget ads_widget">
+													<a href="#">
+															<img class="img-fluid" src="img/blog/add.jpg" alt="">
+													</a>
+													<div class="br"></div>
+											</aside>
+											<aside class="single_sidebar_widget post_category_widget">
+													<h4 class="widget_title">Post Catgories</h4>
+													<ul class="list cat-list">
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Technology</p>
+																			<p>37</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Lifestyle</p>
+																			<p>24</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Fashion</p>
+																			<p>59</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Art</p>
+																			<p>29</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Food</p>
+																			<p>15</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Architecture</p>
+																			<p>09</p>
+																	</a>
+															</li>
+															<li>
+																	<a href="#" class="d-flex justify-content-between">
+																			<p>Adventure</p>
+																			<p>44</p>
+																	</a>
+															</li>
+													</ul>
+													<div class="br"></div>
+											</aside>
+											<aside class="single-sidebar-widget newsletter_widget">
+													<h4 class="widget_title">Newsletter</h4>
+													<p>
+															Here, I focus on a range of items and features that we use in life without giving them a second thought.
+													</p>
+													<div class="form-group d-flex flex-row">
+															<div class="input-group">
+																	<div class="input-group-prepend">
+																			<div class="input-group-text">
+																					<i class="fa fa-envelope" aria-hidden="true"></i>
+																			</div>
+																	</div>
+																	<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email address" onfocus="this.placeholder = ''"
+																			onblur="this.placeholder = 'Enter email'">
+															</div>
+															<a href="#" class="bbtns">Subcribe</a>
+													</div>
+													<p class="text-bottom">You can unsubscribe at any time</p>
+													<div class="br"></div>
+											</aside>
+											<aside class="single-sidebar-widget tag_cloud_widget">
+													<h4 class="widget_title">Tag Clouds</h4>
+													<ul class="list">
+															<li>
+																	<a href="#">Technology</a>
+															</li>
+															<li>
+																	<a href="#">Fashion</a>
+															</li>
+															<li>
+																	<a href="#">Architecture</a>
+															</li>
+															<li>
+																	<a href="#">Fashion</a>
+															</li>
+															<li>
+																	<a href="#">Food</a>
+															</li>
+															<li>
+																	<a href="#">Technology</a>
+															</li>
+															<li>
+																	<a href="#">Lifestyle</a>
+															</li>
+															<li>
+																	<a href="#">Art</a>
+															</li>
+															<li>
+																	<a href="#">Adventure</a>
+															</li>
+															<li>
+																	<a href="#">Food</a>
+															</li>
+															<li>
+																	<a href="#">Lifestyle</a>
+															</li>
+															<li>
+																	<a href="#">Adventure</a>
+															</li>
+													</ul>
+											</aside>
+									</div>
+							</div>
+					</div>
+			</div>
+	</section>
+	<!--================Blog Area =================-->
+
+
+  <!--================Instagram Area =================-->
+  <section class="instagram_area">
+    <div class="container box_1620">
+      <div class="insta_btn">
+        <a class="btn theme_btn" href="#">Follow us on instagram</a>
+      </div>
+      <div class="instagram_image row m0">
+        <a href="#"><img src="img/instagram/ins-1.jpg" alt=""></a>
+        <a href="#"><img src="img/instagram/ins-2.jpg" alt=""></a>
+        <a href="#"><img src="img/instagram/ins-3.jpg" alt=""></a>
+        <a href="#"><img src="img/instagram/ins-4.jpg" alt=""></a>
+        <a href="#"><img src="img/instagram/ins-5.jpg" alt=""></a>
+        <a href="#"><img src="img/instagram/ins-6.jpg" alt=""></a>
+      </div>
+    </div>
+  </section>
+  <!--================End Instagram Area =================-->
+
+ <section class="blog_area section-padding" style="padding-top: 20px;">
+     <div class="section_title text-center mb-70">
+        <h3 class="mb-45">Личный кабинет</h3>
+    </div>
+	 	<div class="container">
+		 	<div class="row">
+			 	<div class="col-lg-8 mb-5 mb-lg-0">
+					<div class="blog_left_sidebar">
+						<form action="{% url 'personal_area' %}" method="post" enctype="multipart/form-data">
+							{% csrf_token %}
+                            <div class="row">
+								<div class="single-element-widget" style="margin-left:15px;">
+									<div class="program_thumb">
+										<img width="100" height="100" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'main2/img/default-avatar.png' %}  {% endif %}">
+									</div>
+								</div>
+								<div>
+									<div class="mt-10" style="margin:10px;">
+										{{ form.username }}
+									</div>
+									<div class="mt-10" style="margin:10px;">
+										{{ form.email }}
+									</div>
+								</div>
+							</div>
+                            <div class="mt-10">{{ form.image }}</div>
+						    <div class="form-error">{{ form.errors }}</div>
+						    <div class="form-error">{{ form.image.errors }}</div>
+                            <div class="mt-10">{{ form.last_name }}</div>
+						    <div class="form-error">{{ form.last_name.errors }}</div>
+                            <div class="mt-10">{{ form.first_name }}</div>
+						    <div class="form-error">{{ form.first_name.errors }}</div>
+                            <div class="mt-10">{{ form.patronymic }}</div>
+						    <div class="form-error">{{ form.patronymic.errors }}</div>
+                            <div class="mt-10">{% localize on %}{{ form.birth }}{% endlocalize %}</div>
+						    <div class="form-error">{{ form.birth.errors }}</div>
+                            <div class="mt-10">{{ form.address }}</div>
+						    <div class="form-error">{{ form.address.errors }}</div>
+                             <div class="mt-10">{{ form.phone_number }}</div>
+						    <div class="form-error">{{ form.phone_number.errors }}</div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px;">{{ form.school_class.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.school_class }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px; ">{{ form.school.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.school }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="mt-10">
+                                <div class="row" style="margin-left:15px;">
+                                    <div class="mt-10" style="margin:10px; ">{{ form.district.label }}:</div>
+                                    <div class="mt-10" style="margin:10px;">{{ form.district }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="button button-contactForm boxed-btn">Сохранить</button>
+                            </div>
+						</form>
+					</div>
+				</div>
+				<div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+					    <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Мои образовательные программы</h3>
+                            {% for u in user.progs.all %}
+                            <div class="media post_item">
+								{% if u.photo %}
+                                <img class="img-fluid" width="80px" height="80px" src="{{ u.photo.url }}" alt="{{ u.title }}">
+								{% else %}
+								<img class="img-fluid" width="80px" height="80px" src="{% static 'main2/img/no-image.PNG' %}" alt="нет фото">
+                                {% endif %}
+								<div class="media-body">
+                                    <a href="{{ u.get_absolute_url }}">
+                                        <h3>{{ u.title }}</h3>
+                                    </a>
+                                    <p>{{ u.time_update|date:"d.m.Y" }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                                <h3 class="widget_title">Мои документы</h3>
+                            <ol class="ordered-list">
+                            	{% for uh in user.documents_set.all %}
+                                {% if uh.is_published == 0 %}
+                                {% if uh.pdffile %}
+                                <a href="{{ uh.pdffile.url }}">
+                                    <li><span>{{ uh.name_pdffile }}</span></li>
+                                </a>
+                                {% endif %}
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+                        </aside>
+                        <aside class="single_sidebar_widget newsletter_widget">
+                            <h4 class="widget_title">Новостная рассылка</h4>
+                            <form action="#">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter email'" placeholder='Email адрес' required>
+                                </div>
+                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                    type="submit">Подписаться</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+	 		</div>
+	 	</div>
+ </section>
+
+	<!-- End Align Area -->
+{% endblock %}

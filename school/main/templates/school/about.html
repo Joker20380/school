@@ -127,6 +127,7 @@
         </div>
         <div class="owl-carousel owl-theme" id="bestSellerCarousel">
           <div class="card text-center card-product">
+            {% for doc in view.docs_all_about %}
             <div class="card-product__img">
               <img class="img-fluid" src="img/product/product1.png" alt="">
               <ul class="card-product__imgOverlay">
@@ -137,10 +138,11 @@
             </div>
             <div class="card-body">
               <p>Accessories</p>
-              <h4 class="card-product__title"><a href="single-product.html">Quartz Belt Watch</a></h4>
-              <p class="card-product__price">$150.00</p>
+              <h4 class="card-product__title"><a href="{{ doc.get_absolute_url }}">{{ doc.title }}</a></h4>
+              <p class="card-product__price">{{ doc.name_pdffile }}</p>
             </div>
           </div>
+          {% endfor %}
 
           <div class="card text-center card-product">
             <div class="card-product__img">
