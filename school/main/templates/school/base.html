@@ -3,217 +3,422 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
+  <head>
+    <title>{% block title %}{% endblock %} - Ретритный центр "Калух"</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta charset="UTF-8">
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %} - Образовательный центр ГБОУ "Вершина"</title>
-	<link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
-	<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
-	<link rel="stylesheet" href="{% static 'vendors/linericon/style.css' %}">
-    <link rel="icon" href="{% static '/img/0001.gif' %}" type="image/png">
-    <link rel="stylesheet" href="{% static 'vendors/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/fontawesome/css/all.min.css' %}">
-	<link rel="stylesheet" href="{% static 'vendors/themify-icons/themify-icons.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/nice-select/nice-select.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.theme.default.min.css' %}">
-    <link rel="stylesheet" href="{% static 'vendors/owl-carousel/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-transform: scale(1);
-transform-origin: 0 0;
-  <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-		{% block mainmenu %}
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="{% url 'index' %}"><img style="width:70px; height:70px;" src="{% static '/img/0001.gif' %}" alt="логотип компании"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-			<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-				<ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						   	aria-expanded="false">О центре</a>
-						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Сведения об организации</a></li>
-							<li class="nav-item"><a class="nav-link" href="single-product.html">Общая информация</a></li>
-							<li class="nav-item"><a class="nav-link" href="checkout.html">Документы</a></li>
-							<li class="nav-item"><a class="nav-link" href="confirmation.html">Новости</a></li>
-							<li class="nav-item"><a class="nav-link" href="cart.html">Контакты</a></li>
-							<li class="nav-item"><a class="nav-link" href="cart.html">Конфиденциальность</a></li>
-						</ul>
-					</li>
-					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						   aria-expanded="false">Как попасть</a>
-						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="category.html">Критерии отбора</a></li>
-							<li class="nav-item"><a class="nav-link" href="single-product.html">Правила пребывания</a></li>
-							<li class="nav-item"><a class="nav-link" href="checkout.html">Условия размещения</a></li>
-							<li class="nav-item"><a class="nav-link" href="confirmation.html">Памятка для родителей</a></li>
-							<li class="nav-item"><a class="nav-link" href="cart.html">Необходимые документы</a></li>
-							<li class="nav-item"><a class="nav-link" href="confirmation.html">Часто задаваемые вопросы</a></li>
-							<li class="nav-item"><a class="nav-link" href="cart.html">Лекториум</a></li>
-						</ul>
-					</li>
-					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						   aria-expanded="false">Мероприятия</a>
-						<ul class="dropdown-menu">
-							<li class="nav-item"><a class="nav-link" href="blog.html">Большие вызовы</a></li>
-							<li class="nav-item"><a class="nav-link" href="single-blog.html">Сириус Лето</a></li>
-						</ul>
-					</li>
-					<li class="nav-item submenu dropdown">
-						<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						   aria-expanded="false">Программы</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="contact.html">ВсОШ</a></li>
-				</ul>
-				<ul class="nav-shop">
-					<li class="nav-item">
-						{% if request.user.is_authenticated %}
-						<button>
-							<a href="{% url 'personal_area' %}">
-								<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-									<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-								</svg>
-							</a>
-							<span> {{ user.username }}</span>
-						</button>
-						{% else %}
-						<button>
-							<a href="{% url 'account_login' %}">
-								<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-									<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
-								</svg>
-							</a>
-						</button>
-						{% endif %}
-					</li>
-				</ul>
-			</div>
-		</div>
-	  </nav>
-	</div>
-  </header>
-	<!--================ End Header Menu Area =================-->
-  <main class="site-main">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap" rel="stylesheet">
 
-      {% block content %}
+    <link rel="stylesheet" href="{% static 'erase/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/animate.css' %}">
 
-      {% endblock %}
+    <link rel="stylesheet" href="{% static 'erase/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/magnific-popup.css' %}">
 
-  </main>
- <!--================ Start footer Area  =================-->
-	<footer class="footer">
-		<div class="footer-area">
-			<div class="container">
-				<div class="row section_gap">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title large_title">Our Mission</h4>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no
-								divided deep moved us lan Gathering thing us land years living.
-							</p>
-							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
-							</p>
-						</div>
-					</div>
-					<div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Quick Links</h4>
-							<ul class="list">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">Product</a></li>
-								<li><a href="#">Brand</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-6 col-sm-6">
-						<div class="single-footer-widget instafeed">
-							<h4 class="footer_title">Gallery</h4>
-							<ul class="list instafeed d-flex flex-wrap">
-								<li><img src="{% static 'img/gallery/r1.jpg' %}" alt=""></li>
-								<li><img src="{% static 'img/gallery/r2.jpg' %}"  alt=""></li>
-								<li><img src="{% static 'img/gallery/r3.jpg' %}" alt=""></li>
-								<li><img src="{% static 'img/gallery/r5.jpg' %}" alt=""></li>
-								<li><img src="{% static 'img/gallery/r7.jpg' %}" alt=""></li>
-								<li><img src="{% static 'img/gallery/r8.jpg' %}" alt=""></li>
-							</ul>
-						</div>
-					</div>
-					{% endblock mainmenu %}
-					<div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-						<div class="single-footer-widget tp_widgets">
-							<h4 class="footer_title">Contact Us</h4>
-							<div class="ml-40">
-								<p class="sm-head">
-									<span class="fa fa-location-arrow"></span>
-									Head Office
-								</p>
-								<p>123, Main Street, Your City</p>
+    <link rel="stylesheet" href="{% static 'erase/css/aos.css' %}">
 
-								<p class="sm-head">
-									<span class="fa fa-phone"></span>
-									Phone Number
-								</p>
-								<p>
-									+123 456 7890 <br>
-									+123 456 7890
-								</p>
+    <link rel="stylesheet" href="{% static 'erase/css/ionicons.min.css' %}">
 
-								<p class="sm-head">
-									<span class="fa fa-envelope"></span>
-									Email
-								</p>
-								<p>
-									free@infoexample.com <br>
-									www.infoexample.com
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<div class="container">
-				<div class="row d-flex">
-					<p class="col-lg-12 footer-text text-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!--================ End footer Area  =================-->
+    <link rel="stylesheet" href="{% static 'erase/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/jquery.timepicker.css' %}">
 
 
+    <link rel="stylesheet" href="{% static 'erase/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'erase/css/style.css' %}">
+  </head>
+  <body>
 
-  <script src="{% static 'vendors/jquery/jquery-3.2.1.min.js' %}"></script>
-  <script src="{% static 'vendors/bootstrap/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'vendors/skrollr.min.js' %}"></script>
-  <script src="{% static 'vendors/owl-carousel/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'vendors/nice-select/jquery.nice-select.min.js' %}"></script>
-  <script src="{% static 'vendors/jquery.ajaxchimp.min.js' %}"></script>
-  <script src="{% static 'vendors/mail-script.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
+    <div class="page">
+    <nav id="colorlib-main-nav" role="navigation">
+      <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
+      <div class="js-fullheight colorlib-table">
+        <div class="img" style="background-image: url({% static 'erase/images/bg_3.jpg' %});"></div>
+        <div class="colorlib-table-cell js-fullheight">
+          <div class="row no-gutters">
+            <div class="col-md-12 text-center">
+              <h1 class="mb-4"><a href="index.html" class="logo">Erase</a></h1>
+              <ul>
+                <li class="active"><a href="index.html"><span>Home</span></a></li>
+                <li><a href="about.html"><span>About</span></a></li>
+                <li><a href="blog.html"><span>Blog</span></a></li>
+                <li><a href="contact.html"><span>Contact</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="colorlib-page">
+      <header>
+      	<div class="container">
+	        <div class="colorlib-navbar-brand">
+	          <a class="colorlib-logo" href="index.html">Erase</a>
+	        </div>
+	        <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+        </div>
+      </header>
+
+      <section class="hero-wrap js-fullheight">
+	      <div class="container-fluid px-0">
+	        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+	          <div class="col-md-12 ftco-animate text-center">
+	          	<div class="desc">
+	          		<span class="subheading">Magazine</span>
+		            <h1 style="background-image: url({% static 'erase/images/bg_1.jpg' %});">Erase</h1>
+		            <span class="subheading-2">UK Edition</span>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+
+	    <section class="ftco-section ftco-no-pb ftco-no-pt">
+	    	<div class="container-fluid px-0">
+	    		<div class="row no-gutters">
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_1.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_1.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_2.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_2.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap bg-darken">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 d-flex justify-content-center align-items-center order-md-last js-fullheight">
+	    						<div class="img" style="background-image: url({% static 'erase/images/image_4.jpg' %});"></div>
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_2.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_5.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_2.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_6.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_3.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_7.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_4.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_8.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_3.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_9.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_3.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_10.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_3.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+
+	    			<div class="col-md-12 blog-wrap bg-darken">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 d-flex justify-content-center align-items-center order-md-last js-fullheight">
+	    						<div class="img" style="background-image: url({% static 'erase/images/image_11.jpg' %});"></div>
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_2.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+
+	    			<div class="col-md-12 blog-wrap">
+	    				<div class="row no-gutters align-items-center">
+	    					<div class="col-md-6 img js-fullheight" style="background-image: url({% static 'erase/images/image_12.jpg' %});">
+
+	    					</div>
+	    					<div class="col-md-6">
+	    						<div class="text p-md-5 p-4 ftco-animate">
+	    							<div class="icon d-flex align-items-center mb-5">
+	    								<div class="img" style="background-image: url({% static 'erase/images/person_3.jpg' %});"></div>
+	    								<div class="position pl-3">
+	    									<h4 class="mb-0">Jamie Jonson</h4>
+	    									<span>fashion.com</span>
+	    								</div>
+	    							</div>
+	    							<h2 class="mb-4"><a href="blog-single.html">Make Peace With Your Broken Pieces</a></h2>
+	    							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	    							<p class="mb-0 mt-4"><a href="#" class="btn btn-primary">Read more <span class="ion-ios-arrow-forward"></span></a></p>
+	    						</div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    	</div>
+	    </section>
+
+
+      <footer class="ftco-footer ftco-section img">
+	    	<div class="overlay"></div>
+	      <div class="container">
+	        <div class="row mb-5">
+	          <div class="col-lg-3">
+	            <div class="ftco-footer-widget mb-4">
+	              <h2 class="ftco-heading-2 logo"><a href="index.html">Erase</a></h2>
+	              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+	              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+	                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+	                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+	                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+	              </ul>
+	            </div>
+	          </div>
+	          <div class="col-lg-4">
+	            <div class="ftco-footer-widget mb-4">
+	              <h2 class="ftco-heading-2">Recent Blog</h2>
+	              <div class="block-21 mb-4 d-flex">
+	                <a class="blog-img mr-4" style="background-image: url({% static 'erase/images/image_1.jpg' %});"></a>
+	                <div class="text">
+	                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+	                  <div class="meta">
+	                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+	                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+	                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+	                  </div>
+	                </div>
+	              </div>
+	              <div class="block-21 mb-4 d-flex">
+	                <a class="blog-img mr-4" style="background-image: url({% static 'erase/images/image_2.jpg' %});"></a>
+	                <div class="text">
+	                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+	                  <div class="meta">
+	                    <div><a href="#"><span class="icon-calendar"></span> July 12, 2018</a></div>
+	                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+	                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	          <div class="col-lg-2">
+	             <div class="ftco-footer-widget mb-4 ml-md-4">
+	              <h2 class="ftco-heading-2">Site Links</h2>
+	              <ul class="list-unstyled">
+	                <li><a href="#" class="py-2 d-block">Home</a></li>
+	                <li><a href="#" class="py-2 d-block">About</a></li>
+	                <li><a href="#" class="py-2 d-block">Model</a></li>
+	                <li><a href="#" class="py-2 d-block">Services</a></li>
+	                <li><a href="#" class="py-2 d-block">Blog</a></li>
+	              </ul>
+	            </div>
+	          </div>
+	          <div class="col-lg-3">
+	            <div class="ftco-footer-widget mb-4">
+	            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+	            	<div class="block-23 mb-3">
+		              <ul>
+		                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+		                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+		                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+		              </ul>
+		            </div>
+	            </div>
+	          </div>
+	        </div>
+	        <div class="row">
+	          <div class="col-md-12 text-center">
+
+	            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+	  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	          </div>
+	        </div>
+	      </div>
+	    </footer>
+
+      <!-- loader -->
+      <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+      </div>
+    </div>
+
+
+    <script src="{% static 'erase/js/jquery.min.js' %}"></script>
+    <script src="{% static 'erase/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'erase/js/popper.min.js' %}"></script>
+    <script src="{% static 'erase/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'erase/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'erase/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'erase/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'erase/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'erase/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'erase/js/aos.js' %}"></script>
+    <script src="{% static 'erase/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'erase/js/scrollax.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{% static 'erase/js/google-map.js' %}"></script>
+    <script src="{% static 'erase/js/main.js' %}"></script>
+
+  </body>
 </html>

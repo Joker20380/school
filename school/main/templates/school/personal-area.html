@@ -38,11 +38,9 @@
 			<div class="container">
 					<div class="row">
 							<div class="col-lg-8 posts-list">
-
-
-									<div class="comment-form">
-											<h4>Leave a Reply</h4>
-											<form action="{% url 'personal_area' %}" method="post" enctype="multipart/form-data">
+								<div class="comment-form">
+									<h4>Leave a Reply</h4>
+															<form action="{% url 'personal_area' %}" method="post" enctype="multipart/form-data">
 							{% csrf_token %}
                             <div class="row">
 								<div class="single-element-widget" style="margin-left:15px;">
@@ -66,8 +64,8 @@
 						    <div class="form-error">{{ form.last_name.errors }}</div>
                             <div class="mt-10">{{ form.first_name }}</div>
 						    <div class="form-error">{{ form.first_name.errors }}</div>
-                            <div class="mt-10">{{ form.patronymic }}</div>
-						    <div class="form-error">{{ form.patronymic.errors }}</div>
+                            <div class="mt-10">{{ form.userprofile_userprofile.patronymic }}</div>
+						    <div class="form-error">{{ form.userprofile_userprofile.patronymic.errors }}</div>
                             <div class="mt-10">{% localize on %}{{ form.birth }}{% endlocalize %}</div>
 						    <div class="form-error">{{ form.birth.errors }}</div>
                             <div class="mt-10">{{ form.address }}</div>
@@ -78,21 +76,21 @@
                                 <div class="row" style="margin-left:15px;">
                                     <div class="mt-10" style="margin:10px;">{{ form.school_class.label }}:</div>
                                     <div class="mt-10" style="margin:10px;">{{ form.school_class }}</div>
-                                    <div class="form-error">{{ form.school_class.errors }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
                                 </div>
                             </div>
                             <div class="mt-10">
                                 <div class="row" style="margin-left:15px;">
                                     <div class="mt-10" style="margin:10px; ">{{ form.school.label }}:</div>
                                     <div class="mt-10" style="margin:10px;">{{ form.school }}</div>
-                                    <div class="form-error">{{ form.school.errors }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
                                 </div>
                             </div>
                             <div class="mt-10">
                                 <div class="row" style="margin-left:15px;">
                                     <div class="mt-10" style="margin:10px; ">{{ form.district.label }}:</div>
                                     <div class="mt-10" style="margin:10px;">{{ form.district }}</div>
-                                    <div class="form-error">{{ form.district.errors }}</div>
+                                    <div class="form-error">{{ form.errors }}</div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
@@ -319,124 +317,6 @@
     </div>
   </section>
   <!--================End Instagram Area =================-->
-
- <section class="blog_area section-padding" style="padding-top: 20px;">
-     <div class="section_title text-center mb-70">
-        <h3 class="mb-45">Личный кабинет</h3>
-    </div>
-	 	<div class="container">
-		 	<div class="row">
-			 	<div class="col-lg-8 mb-5 mb-lg-0">
-					<div class="blog_left_sidebar">
-						<form action="{% url 'personal_area' %}" method="post" enctype="multipart/form-data">
-							{% csrf_token %}
-                            <div class="row">
-								<div class="single-element-widget" style="margin-left:15px;">
-									<div class="program_thumb">
-										<img width="100" height="100" src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'main2/img/default-avatar.png' %}  {% endif %}">
-									</div>
-								</div>
-								<div>
-									<div class="mt-10" style="margin:10px;">
-										{{ form.username }}
-									</div>
-									<div class="mt-10" style="margin:10px;">
-										{{ form.email }}
-									</div>
-								</div>
-							</div>
-                            <div class="mt-10">{{ form.image }}</div>
-						    <div class="form-error">{{ form.errors }}</div>
-						    <div class="form-error">{{ form.image.errors }}</div>
-                            <div class="mt-10">{{ form.last_name }}</div>
-						    <div class="form-error">{{ form.last_name.errors }}</div>
-                            <div class="mt-10">{{ form.first_name }}</div>
-						    <div class="form-error">{{ form.first_name.errors }}</div>
-                            <div class="mt-10">{{ form.patronymic }}</div>
-						    <div class="form-error">{{ form.patronymic.errors }}</div>
-                            <div class="mt-10">{% localize on %}{{ form.birth }}{% endlocalize %}</div>
-						    <div class="form-error">{{ form.birth.errors }}</div>
-                            <div class="mt-10">{{ form.address }}</div>
-						    <div class="form-error">{{ form.address.errors }}</div>
-                             <div class="mt-10">{{ form.phone_number }}</div>
-						    <div class="form-error">{{ form.phone_number.errors }}</div>
-                            <div class="mt-10">
-                                <div class="row" style="margin-left:15px;">
-                                    <div class="mt-10" style="margin:10px;">{{ form.school_class.label }}:</div>
-                                    <div class="mt-10" style="margin:10px;">{{ form.school_class }}</div>
-                                    <div class="form-error">{{ form.errors }}</div>
-                                </div>
-                            </div>
-                            <div class="mt-10">
-                                <div class="row" style="margin-left:15px;">
-                                    <div class="mt-10" style="margin:10px; ">{{ form.school.label }}:</div>
-                                    <div class="mt-10" style="margin:10px;">{{ form.school }}</div>
-                                    <div class="form-error">{{ form.errors }}</div>
-                                </div>
-                            </div>
-                            <div class="mt-10">
-                                <div class="row" style="margin-left:15px;">
-                                    <div class="mt-10" style="margin:10px; ">{{ form.district.label }}:</div>
-                                    <div class="mt-10" style="margin:10px;">{{ form.district }}</div>
-                                    <div class="form-error">{{ form.errors }}</div>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Сохранить</button>
-                            </div>
-						</form>
-					</div>
-				</div>
-				<div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-					    <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Мои образовательные программы</h3>
-                            {% for u in user.progs.all %}
-                            <div class="media post_item">
-								{% if u.photo %}
-                                <img class="img-fluid" width="80px" height="80px" src="{{ u.photo.url }}" alt="{{ u.title }}">
-								{% else %}
-								<img class="img-fluid" width="80px" height="80px" src="{% static 'main2/img/no-image.PNG' %}" alt="нет фото">
-                                {% endif %}
-								<div class="media-body">
-                                    <a href="{{ u.get_absolute_url }}">
-                                        <h3>{{ u.title }}</h3>
-                                    </a>
-                                    <p>{{ u.time_update|date:"d.m.Y" }}</p>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </aside>
-                        <aside class="single_sidebar_widget popular_post_widget">
-                                <h3 class="widget_title">Мои документы</h3>
-                            <ol class="ordered-list">
-                            	{% for uh in user.documents_set.all %}
-                                {% if uh.is_published == 0 %}
-                                {% if uh.pdffile %}
-                                <a href="{{ uh.pdffile.url }}">
-                                    <li><span>{{ uh.name_pdffile }}</span></li>
-                                </a>
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
-                            </ol>
-                        </aside>
-                        <aside class="single_sidebar_widget newsletter_widget">
-                            <h4 class="widget_title">Новостная рассылка</h4>
-                            <form action="#">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'" placeholder='Email адрес' required>
-                                </div>
-                                <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                                    type="submit">Подписаться</button>
-                            </form>
-                        </aside>
-                    </div>
-                </div>
-	 		</div>
-	 	</div>
- </section>
 
 	<!-- End Align Area -->
 {% endblock %}
